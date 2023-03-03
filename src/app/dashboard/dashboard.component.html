@@ -1,0 +1,27 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row class="toolbar">
+        <span>Belvo Account Manager</span>
+        <button [matMenuTriggerFor]="menu" mat-icon-button>
+            <mat-icon>menu</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <mat-card>
+                <mat-card-content>
+                    <div class="card-content">
+                        <mat-icon>account_circle</mat-icon><span>{{info.username}}</span>
+                    </div>
+                    <div class="card-content">
+                        <mat-icon>email</mat-icon><span>{{info.email}}</span>
+                    </div>
+                    <div class="card-content">
+                        <mat-icon>key</mat-icon><span>{{info.role=='admin'?'Admin':'User'}}</span>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+            <button *ngIf="info.role=='admin'" mat-menu-item
+                (click)="goToAdmin()"><mat-icon>manage_accounts</mat-icon>Users</button>
+            <button mat-menu-item (click)="logout()"><mat-icon>logout</mat-icon>Logout</button>
+        </mat-menu>
+    </mat-toolbar-row>
+</mat-toolbar>
+<router-outlet></router-outlet>

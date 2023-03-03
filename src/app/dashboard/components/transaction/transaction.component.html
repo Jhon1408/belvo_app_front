@@ -1,0 +1,84 @@
+<div class="container">
+    <mat-accordion>
+        <mat-expansion-panel *ngFor="let bank of banks">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{formatBankName(bank.name)}}
+                </mat-panel-title>
+                <mat-panel-description>
+                    {{formatBankType(bank.type)}}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-accordion>
+                <mat-expansion-panel *ngFor="let account of bank.accounts">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            {{account.name}}
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            {{account.type}}
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <div class="card-content">
+                        <strong>Current balance: </strong><span>{{account.balance.current}} {{account.currency}}</span>
+                    </div>
+                    <div class="card-content">
+                        <strong>Available balance: </strong><span>{{account.balance.available}}
+                            {{account.currency}}</span>
+                    </div>
+                    <div class="card-content">
+                        <strong>Balance type: </strong><span>{{account.balance_type}}</span>
+                    </div>
+                    <div class="card-content">
+                        <strong>Category: </strong><span>{{account.category}}</span>
+                    </div>
+                    <div class="card-content">
+                        <strong>Currency: </strong><span>{{account.currency}}</span>
+                    </div>
+                    <hr>
+                    <mat-accordion>
+                        <mat-expansion-panel *ngFor="let transaction of account.transactions">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    {{transaction.description}}
+                                </mat-panel-title>
+                                <mat-panel-description>
+                                    {{transaction.amount}} {{transaction.currency}}
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+                            <div class="card-content">
+                                <strong>Date: </strong><span>{{transaction.accounting_date|date:'dd/MM/yyyy
+                                    HH:mm'}}</span>
+                            </div>
+                            <div class="card-content">
+                                <strong>Balance: </strong><span>{{transaction.balance}} {{transaction.currency}}</span>
+                            </div>
+                            <div class="card-content">
+                                <strong>Amount: </strong><span>{{transaction.amount}} {{transaction.currency}}</span>
+                            </div>
+                            <div class="card-content">
+                                <strong>Category: </strong><span>{{transaction.category}}</span>
+                            </div>
+                            <div class="card-content">
+                                <strong>Description: </strong><span>{{transaction.description}}</span>
+                            </div>
+                            <div class="card-content">
+                                <strong>Status: </strong><span>{{transaction.status}}</span>
+                            </div>
+                            <div class="card-content">
+                                <strong>Type: </strong><span>{{transaction.type}}</span>
+                            </div>
+                            <hr>
+                            <div class="card-content">
+                                <strong>Merchant name: </strong><span>{{transaction.merchant.name}}</span>
+                            </div>
+                            <div class="card-content">
+                                <strong>Merchant site: </strong><span>{{transaction.merchant.website}}</span>
+                            </div>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

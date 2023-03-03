@@ -1,0 +1,22 @@
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    margin: 16px;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    span {
+        margin-left: 16px;
+    }
+}
